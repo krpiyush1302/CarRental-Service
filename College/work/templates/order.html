@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+
+{% block style %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        box-shadow: aquamarine;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .billing-details {
+        margin-bottom: 30px;
+    }
+
+    .billing-details h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .billing-details p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .btn-container {
+        text-align: center;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        margin-right: 10px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Booking Confirmed!</h2>
+
+    <div class="billing-details">
+        <h3>Booking Details</h3>
+        {% for i in carid %}
+        <p><strong>Car Name:</strong> {{ i.Carname }}</p>
+        {% endfor %}
+        <p><strong>Number of Days:</strong> {{ days }}</p>
+        <p><strong>Price per Day:</strong> Rs: {{ price }}</p>
+        <p><strong>Total Amount:</strong> Rs: {{ amount }}</p>
+        <p><h2>Your car has been successfully booked!</h2></p>
+        <p><h3>Please pay the amount in cash upon delivery.</h3></p>
+    </div>
+
+    <div class="btn-container">
+        <a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a>
+    </div>
+</div>
+{% endblock %}

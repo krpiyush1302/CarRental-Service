@@ -1,0 +1,133 @@
+{% extends 'main.html'%}
+
+{% block style %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'mystyle.css'%}">
+
+
+{% endblock %}
+
+
+{% block body %}
+
+    <section class="view" id="view">
+        <div class="text">
+            <h2><span>Easy</span> & Fast <br>Way to Rent <br>a Car.</h2>
+            <p><big>Ready to make unique memories</big></p><br>
+        </div>
+        
+    </section>
+    
+    <section class="travel" id="travel">
+        <div class="top-view">
+            <span>How It's Work.</span>
+            <h2>Rent with 4 Easy Steps.</h2>
+        </div>
+        
+        <div class="travel-container">
+            <div class="box">
+                <i class="fa-solid fa-location-dot"></i>
+                <h2>Choose Location</h2>
+                <p>Experience the road like never before.</p>
+            </div>
+            
+            <div class="box">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h2>Book a Car</h2>
+                <p>Rent a car that suits your every need..</p>
+            </div>
+            
+            <div class="box">
+                <i class="fa-solid fa-calendar-check"></i>
+                <h2>Pick-Up Date</h2>
+                <p>Unforgettable journeys start here.</p>
+            </div>
+            
+            <div class="box">
+                <i class="fa-solid fa-calendar-check"></i>
+                <h2>Return Date</h2>
+                <p>Thanks for travel with us.</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    <section class="service" id="service">
+        <div class="top-view">
+            <span>Best Services</span>
+            <h2>Explore top Deals.</h2>
+        </div>
+        <div class="service-container">
+            {% for i in rent %}
+            <div class="box">
+                <div class="box-img">
+                    <img src="{{i.img.url}}" alt="{{i.carname}}">
+                </div>
+                <br>
+                <p>{{i.Fueltype}}</p>
+                <h3>{{i.Carname}}</h3>
+                <h2>Rs{{i.Price}}<span>/Day</span></h2>
+                <a href="{% url 'cardetails'%}?carid={{i.id}}" class="button"> Rent Now</a>
+            </div>
+            {% endfor %}
+        </div>
+        
+           
+    </section>
+
+    
+    <section class="feedback" id="feedback">
+        <div class="top-view">
+            <span>Feedback</span>
+            <h1>Best Customer Experience</h1>
+        </div>
+        <div class="feedback-container">
+            <div class="feedback-img">
+                <img src="{% static 'images/BMW-5-car.jpg' %}" alt="BMW">
+            </div>
+            <div class="feedback-text">
+                <span>Feedback</span>
+                <p>I just wanted to compliment you on your rental car service as we really appreciated the seamless collect and return arrangements. We look forward to 'traveling' with you in the spring</p>
+                <p>I want you to know how delighted I am with the car! It is really a pleasure to drive; I feel very comfortable in it and find that it handles very well. The extras like the heaters and leather seats make a difference. I am so pleased</p>
+                <a href="#" class="button">Read More</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="foot-panel1">
+            <li><a href="#header">Back to Home</a></li>
+        </div>
+        <div class="foot-panel2">
+            <ul>
+                <p>Get to Know Us</p>
+                <a>Careers</a>
+                <a>Blog</a>
+                <a>About DriveMeNow</a>
+            </ul>
+            <ul>
+                <p>Make Money with Us</p>
+                <a>Rent Car on DriveMeNow</a>
+                <a>Advertise Your Products</a>
+                <a>Self-Publish with Us</a>
+            </ul>
+            
+            <ul>
+                <p>Let Us Help You</p>
+                <a>Your Account</a>
+                <a>Your Orders</a>
+                <a>24*7 Assistant</a>
+                <a>Help</a>
+            </ul>
+        </div>
+    </footer>
+
+    <footer id="copyright">
+        <h5>Made by Team B1(BCA)</h5><br>
+        &#169;  DRIVEMeNow, Inc. or its affiliates
+    </footer>
+    {% endblock %}
+    <!-- Link to Java script -->
+    <script src="script.js"></script>

@@ -1,0 +1,155 @@
+{% extends 'main.html'%}
+
+
+{% block style %}
+
+<style>
+ /* General styles */
+ #checkoutbody {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(90, 216, 210, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for headings */
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Style for form labels and inputs */
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical; /* Allow vertical resize */
+}
+
+/* Style for buttons */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #ccc;
+    color: black;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<div id="checkoutbody">
+    <div id="heading1">
+        <h1>Checkout</h1>
+    </div>
+    <div id="form1">
+        <form action="{% url 'checkout1' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="price" value="{{price}}">
+            <input type="hidden" name="carid" value="{{carid}}">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">
+            </div>
+            <div>
+                <label for="number">Phone:</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+            <div>
+                <label for="text">Driving Licence No:</label>
+                <input type="text" id="licence" name="licence">
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                <textarea name="Address" id="Address" rows="3" cols="12">Please Enter your address</textarea>
+            </div>
+            <div>
+                <label for="booking">Booking Date:</label>
+                <input type="date" id="Booking-date" name="bookingdate">
+            </div>
+            <div>
+              <label for="return">Booking Location:</label>
+              <input type="text" id="Booking-location" name="bookinglocation">
+          </div>
+            <div>
+                <label for="return">Return Date:</label>
+                <input type="date" id="Return-date" name="returndate">
+            </div>
+            <div>
+              <label for="return">Destination Location:</label>
+              <input type="text" id="destination-location" name="destinationlocation">
+          </div>
+            <div>
+                <label for="text">City:</label>
+                <input type="text" id="city" name="city">
+            </div>
+
+            <div>
+                <label for="text">State:</label>
+                <select name="State" id="State">
+                    <option value="Bihar">Bihar</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="New Delhi">New Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                </select>
+            </div>
+            <div>
+                <label for="number">Pincode:</label>
+                <input type="text" id="pincode" name="pincode">
+            </div>
+            <div>
+                <label for="text">Country:</label>
+                <input type="text" id="country" name="country">
+            </div>
+            <a href="{% url 'cardetails'%}?carbook={{i.id}}" class="btn btn-secondary">Back to Previous Page</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'main.html'%}
+
+
+{% block style %}
+
+<style>
+    .cardetailsbox{
+        /* background-color: rgb(72, 80, 80); */
+        display: flex;
+        padding: 2rem;
+        background-color: rgba(9, 224, 191, 0.671);
+        /* justify-content: space-between; */
+    }
+    .cardetailsleft img{
+        width:35rem;
+    }
+    .carddetailsright{
+        margin-left: 3rem;
+        border-radius: 5%;
+    }
+
+</style>
+
+
+{% endblock %}
+
+{% block body %}
+
+<div id="cardetailsbody">
+
+    {% for i in car %}
+    <div class="cardetailsbox">
+
+        <div class="cardetailsleft">
+                <img src="{{i.img.url}}" class="card-img-top" alt="...">
+        </div>
+        <div class="carddetailsright">
+            <h2 class="card-title">{{i.Carname}}</h2>
+            <h5>Fuel type: {{i.Fueltype}}</h5>
+            <h5>RS: {{i.Price}} Per Day</h5>
+            <!-- <h5>Contact_no :{{i.phone}}</h5> -->
+            <h5>Details :</h5>
+            <p>{{i.Details}}</p>
+            <a href="{% url 'home'%}?carbook={{i.id}}" class="btn btn-secondary">Back</a>
+            <a href="{% url 'checkout1'%}?carbook={{i.id}}&carprice={{i.Price}}" class="btn btn-primary">Rent Now</a>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+
+{% endblock %}
